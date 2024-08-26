@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Opciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Tema oscuro</ion-label>
+      <ion-toggle slot="end" (ionChange)="toggleDarkTheme($event)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Activar notificaciones</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="notificationsEnabled"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Idioma</ion-label>
+      <ion-select  slot = "end" [(ngModel)]="selectedLanguage" (ionChange)="changeLanguage($event)">
+        <ion-select-option value="es">Español</ion-select-option>
+        <ion-select-option value="en">Inglés</ion-select-option>
+      </ion-select>
+    </ion-item>    
+    
+  </ion-list>
+
+  <app-explore-container name="Opciones page"></app-explore-container>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-button expand="block" color="danger" (click)="logout()">Cerrar Sesión</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
