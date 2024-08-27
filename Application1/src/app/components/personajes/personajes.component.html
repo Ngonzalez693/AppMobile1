@@ -1,37 +1,27 @@
 <ion-card>
+
   <ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    <ion-card-title>Personajes</ion-card-title>
+    <ion-card-subtitle>Ricky Morty</ion-card-subtitle>
   </ion-card-header>
+
+  <ion-searchbar value=""></ion-searchbar>
+
   <ion-card-content>
+
     <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let personaje of personajes">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          <img alt="Foto Personaje" src="{{personaje.image}}" />
         </ion-thumbnail>
-        <ion-label>Item</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
-        <ion-label>Item</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
-        <ion-label>Item</ion-label>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-        </ion-thumbnail>
-        <ion-label>Item</ion-label>
+        <ion-label (click)="irAPersonaje(personaje.id)">{{ personaje.name }}</ion-label>
+    
+        <ion-button slot="end" fill="outline" color="primary">
+          <ion-icon name="heart" aria-label="Favorite"></ion-icon>
+        </ion-button>
+    
       </ion-item>
     </ion-list>
+
   </ion-card-content>
 </ion-card>

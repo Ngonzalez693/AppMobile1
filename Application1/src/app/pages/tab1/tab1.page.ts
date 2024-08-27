@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,30 +8,33 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  items: string[] = [];
+  personajes: any[] = [];
+
+  constructor(private bd: RickyMortyBdService) { }
+
+  async cargarPersonajes() {
+    //this.cargando = true;
+    await this.bd
+      .getAllPersonajes()
+      .toPromise()
+      .then((resp: any) => {
+
+        this.personajes = resp.results;
+        console.log('MISPERSONAJES', this.personajes);
+
+      });
+  }
 
   ngOnInit() {
-    this.generateItems();
+    this.cargarPersonajes();
   }
 
-  private generateItems() {
-    const count = this.items.length + 1;
-    for (let i = 0; i < 50; i++) {
-      this.items.push(`Personaje ${count + i}`);
-    }
-  }
-  
   onIonInfinite(ev: Event) {
-    this.generateItems();
+    this.cargarPersonajes();
     setTimeout(() => {
       const infiniteScroll = ev.target as HTMLIonInfiniteScrollElement;
       infiniteScroll.complete();
     }, 500);
   }
 
-  addToFavorites(item: string) {
-    console.log('Agregar a favoritos:', item);
-    // Not Implemented
-  }
-  
 }
