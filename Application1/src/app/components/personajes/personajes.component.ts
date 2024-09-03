@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personajes',
@@ -9,12 +10,13 @@ export class PersonajesComponent  implements OnInit {
 
   @Input() personajes: any[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
   irAPersonaje(unIdPersonaje:number){
-    console.log(unIdPersonaje);
+    console.log('IdPersonaje: ', unIdPersonaje);
+    this.router.navigate(['/pagina2', unIdPersonaje]);
   }
 
 }

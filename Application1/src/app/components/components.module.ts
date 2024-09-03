@@ -6,8 +6,14 @@ import { PersonajeComponent } from "./personaje/personaje.component";
 import { PersonajesComponent } from "./personajes/personajes.component";
 
 @NgModule({
-    declarations: [PersonajeComponent, PersonajesComponent],
-    imports: [CommonModule, IonicModule],
-    exports: [PersonajeComponent, PersonajesComponent]
+    declarations: [
+        PersonajeComponent,
+        PersonajesComponent],
+    imports: [
+        CommonModule, 
+        IonicModule],
+    exports: [
+        PersonajeComponent, 
+        PersonajesComponent]
 })
-export class PersonajeModule { }
+export class ComponentsModule { }

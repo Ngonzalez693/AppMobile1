@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'tab4',
     loadChildren: () => import('./pages/tab4/tab4.module').then( m => m.Tab4PageModule)
   },
+  {
+    path: 'pagina2/:id',
+    loadChildren: () => import('./pages/pagina2/pagina2.module').then( m => m.Pagina2PageModule)
+  },
 ];
 @NgModule({
   imports: [

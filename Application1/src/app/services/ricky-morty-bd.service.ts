@@ -29,7 +29,7 @@ export class RickyMortyBdService {
 
     return this.http.get(url, {}).pipe(
       map((res: any) => {
-        console.log('PERSONAJE', res);
+        //console.log('PERSONAJE', res);
         return res;
       })
     );

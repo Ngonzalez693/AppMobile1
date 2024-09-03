@@ -6,7 +6,7 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { PersonajeModule } from "../../components/components.module";
+import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { PersonajeModule } from "../../components/components.module";
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    PersonajeModule
+    ComponentsModule
 ],
   declarations: [Tab1Page]
 })
