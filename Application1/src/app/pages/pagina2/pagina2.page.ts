@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class Pagina2Page implements OnInit {
   personaje:any;
 
   constructor(private activatedRoute: ActivatedRoute, 
-              private bd: RickyMortyBdService) {
+              private bd: RickyMortyBdService,
+              private router: Router) {
 
     this.activatedRoute.params.subscribe(params => {
       this.unIdPersonaje = params['id'];
@@ -40,4 +41,7 @@ export class Pagina2Page implements OnInit {
       });
   }
 
+  Volver(){
+    this.router.navigate(['./tabs/tab1'])
+  }
 }

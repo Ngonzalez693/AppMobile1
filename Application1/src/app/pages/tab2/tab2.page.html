@@ -13,31 +13,6 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-card>
-
-    <ion-card-header>
-      <ion-card-title>Lugares</ion-card-title>
-      <ion-card-subtitle>Ricky Morty</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-searchbar value=""></ion-searchbar>
-  
-    <ion-card-content>
-  
-      <ion-list>
-
-        <ion-item *ngFor="let lugar of lugares">
-          <!--
-          <ion-thumbnail slot="start">
-            <img alt="Foto lugar" src="{{lugar.image}}" />
-          </ion-thumbnail>
-          -->
-          <ion-label>{{ lugar.name }}</ion-label>
-      
-        </ion-item>
-      </ion-list>
-  
-    </ion-card-content>
-  </ion-card>
+  <app-lugares [lugares] = "lugares"></app-lugares>
 
 </ion-content>

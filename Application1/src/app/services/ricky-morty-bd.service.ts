@@ -53,7 +53,7 @@ export class RickyMortyBdService {
 
     return this.http.get(url, {}).pipe(
       map((res: any) => {
-        console.log('LUGAR', res);
+        //console.log('LUGAR', res);
         return res;
       })
     );

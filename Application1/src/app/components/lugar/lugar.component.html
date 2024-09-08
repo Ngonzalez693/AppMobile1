@@ -1,0 +1,21 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{lugar.name}}</ion-card-title>
+    <ion-card-subtitle>Lugar</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p>Personajes cuyo origen es este lugar:</p>
+    <ion-list *ngIf="personajes.length > 0">
+      <ion-item *ngFor="let personaje of personajes">
+        <ion-avatar slot="start">
+          <img [src]="personaje.image">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{personaje.name}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <p *ngIf="personajes.length === 0">No hay personajes cuyo origen sea este lugar.</p>
+  </ion-card-content>
+</ion-card>

@@ -4,16 +4,22 @@ import { IonicModule } from "@ionic/angular";
 
 import { PersonajeComponent } from "./personaje/personaje.component";
 import { PersonajesComponent } from "./personajes/personajes.component";
+import { LugarComponent } from "./lugar/lugar.component";
+import { LugaresComponent } from "./lugares/lugares.component";
 
 @NgModule({
     declarations: [
         PersonajeComponent,
-        PersonajesComponent],
+        PersonajesComponent,
+        LugarComponent,
+        LugaresComponent],
     imports: [
         CommonModule, 
         IonicModule],
     exports: [
         PersonajeComponent, 
-        PersonajesComponent]
+        PersonajesComponent,
+        LugarComponent,
+        LugaresComponent]
 })
 export class ComponentsModule { }
