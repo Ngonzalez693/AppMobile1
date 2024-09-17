@@ -9,6 +9,8 @@ import { RickyMortyBdService } from 'src/app/services/ricky-morty-bd.service';
 })
 export class Tab1Page implements OnInit {
   personajes: any[] = [];
+  url_next: any;
+
 
   constructor(private bd: RickyMortyBdService) { }
 
@@ -22,6 +24,24 @@ export class Tab1Page implements OnInit {
         this.personajes = resp.results;
         console.log('MISPERSONAJES', this.personajes);
 
+        this.url_next = resp.info.next;
+        console.log('Siguiente:', this.url_next);
+
+      });
+  }
+
+  async cargarPersonajesSiguientes() {
+    //this.cargando = true;
+    await this.bd
+      .getMorePersonajes(this.url_next)
+      .toPromise()
+      .then((resp: any) => {
+
+        let masPersonajes = resp.results;
+        this.personajes.push( ...masPersonajes);
+
+        this.url_next = resp.info.next;
+        console.log('Siguiente:', this.url_next);
       });
   }
 
@@ -29,11 +49,10 @@ export class Tab1Page implements OnInit {
     this.cargarPersonajes();
   }
 
-  onIonInfinite(ev: Event) {
-    this.cargarPersonajes();
+  onIonInfinite(ev:any) {
+    this.cargarPersonajesSiguientes();
     setTimeout(() => {
-      const infiniteScroll = ev.target as HTMLIonInfiniteScrollElement;
-      infiniteScroll.complete();
+      (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
   }
 

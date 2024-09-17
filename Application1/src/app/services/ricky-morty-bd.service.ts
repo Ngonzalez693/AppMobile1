@@ -10,7 +10,6 @@ export class RickyMortyBdService {
 
   constructor(private http: HttpClient) { }
 
-  
   getAllPersonajes(): any {
 
     let url = `${URL_RM}/character`;
@@ -21,6 +20,22 @@ export class RickyMortyBdService {
         return res;
       })
     );
+  }
+
+  getMorePersonajes(next_url:string):any{
+
+    let url = `${URL_RM}/character`;
+
+    if(next_url.length > 0){
+      url = `${next_url}`
+    }
+
+    return this.http.get(url, {}).pipe(
+      map((res:any) => {
+        console.log('PERSONAJES_RM', res);
+        return res;
+      })
+    )
   }
 
   getPersonajeById(unId:number): any {
@@ -45,6 +60,22 @@ export class RickyMortyBdService {
         return res;
       })
     );
+  }
+
+  getMoreLugares(next_url:string):any{
+
+    let url = `${URL_RM}/location`;
+
+    if(next_url.length > 0){
+      url = `${next_url}`
+    }
+
+    return this.http.get(url, {}).pipe(
+      map((res:any) => {
+        console.log('Lugares_RM', res);
+        return res;
+      })
+    )
   }
 
   getLugaresById(unId:number): any {
