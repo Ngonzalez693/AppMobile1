@@ -11,7 +11,6 @@ export class Tab1Page implements OnInit {
   personajes: any[] = [];
   url_next: any;
 
-
   constructor(private bd: RickyMortyBdService) { }
 
   async cargarPersonajes() {

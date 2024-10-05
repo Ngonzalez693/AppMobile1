@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { Storage } from '@ionic/storage-angular';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class StorageService {
 
   private _storage: Storage | null = null;
   private _localPersonajes: any[] = [];
+  private favoritosSubject = new BehaviorSubject<any[]>([]);
 
   constructor(private storage: Storage) {
     this.init();
@@ -19,6 +20,10 @@ export class StorageService {
     const storage = await this.storage.create();
     this._storage = storage;
     this.loadFvorites();
+  }
+
+  get favoritos$() {
+    return this.favoritosSubject.asObservable(); // Observable para los favoritos
   }
 
   // Create and expose methods that users of this service can
@@ -40,7 +45,8 @@ export class StorageService {
       this._localPersonajes = [personaje, ...this._localPersonajes];
     }
 
-    this._storage?.set('personajes', this._localPersonajes);
+    await this._storage?.set('personajes', this._localPersonajes);
+    this.favoritosSubject.next(this._localPersonajes);
   }
 
   async loadFvorites(){
@@ -48,9 +54,10 @@ export class StorageService {
     try{
       const PERSONAJES = await this._storage?.get('personajes');
       this._localPersonajes = PERSONAJES || [];
+      this.favoritosSubject.next(this._localPersonajes);
     }
     catch (error){
-
+      console.error('Error al cargar favoritos', error);
     }
   }
 

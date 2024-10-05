@@ -8,6 +8,7 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
 
 import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from "../../explore-container/explore-container.module";
+import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ExploreContainerComponentModule } from "../../explore-container/explore
     FormsModule,
     IonicModule,
     Tab3PageRoutingModule,
-    ExploreContainerComponentModule
+    ExploreContainerComponentModule,
+    ComponentsModule
 ],
   declarations: [Tab3Page]
 })

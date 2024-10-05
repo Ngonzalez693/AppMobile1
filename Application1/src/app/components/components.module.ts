@@ -6,13 +6,15 @@ import { PersonajeComponent } from "./personaje/personaje.component";
 import { PersonajesComponent } from "./personajes/personajes.component";
 import { LugarComponent } from "./lugar/lugar.component";
 import { LugaresComponent } from "./lugares/lugares.component";
+import { FavoritosComponent } from "./favoritos/favoritos.component";
 
 @NgModule({
     declarations: [
         PersonajeComponent,
         PersonajesComponent,
         LugarComponent,
-        LugaresComponent],
+        LugaresComponent,
+        FavoritosComponent],
     imports: [
         CommonModule, 
         IonicModule],
@@ -20,6 +22,7 @@ import { LugaresComponent } from "./lugares/lugares.component";
         PersonajeComponent, 
         PersonajesComponent,
         LugarComponent,
-        LugaresComponent]
+        LugaresComponent,
+        FavoritosComponent]
 })
 export class ComponentsModule { }

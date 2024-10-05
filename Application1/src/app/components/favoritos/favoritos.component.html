@@ -1,0 +1,26 @@
+<ion-card>
+
+  <ion-card-header>
+    <ion-card-title>Favoritos</ion-card-title>
+  </ion-card-header>
+
+  <ion-searchbar value=""></ion-searchbar>
+  
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let personaje of favoritos">
+        <ion-thumbnail slot="start">
+          <img alt="Foto Personaje" src="{{personaje.image}}" />
+        </ion-thumbnail>
+        <ion-label (click)="irAPersonaje(personaje.id)">{{ personaje.name }}</ion-label>
+
+        <ion-buttons>
+          <ion-button (click)="addFavorite(personaje)" aria-label="Favorite">
+            <ion-icon [name]="esFavorito(personaje)? 'heart': 'heart-outline'" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
